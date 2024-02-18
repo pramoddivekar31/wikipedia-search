@@ -9,7 +9,7 @@ Wikipedia Search is a simple application built with TypeScript, Node.js, and Rea
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/wikipedia-search.git
+   git clone https://github.com/pramoddivekar31/wikipedia-search
    ```
 
 2. **Navigate to the project directory:**
@@ -43,9 +43,9 @@ Start the application (this will run the server and client development servers):
 
 ```bash
 npm run dev
-```
 
 Access the application at http://localhost:3000.
+```
 
 Run the test cases of the client:
 
@@ -73,8 +73,6 @@ npm run server
 
 ## Performance Optimizations
 
-This application prioritizes a smooth and responsive user experience, and we've implemented several key optimizations to achieve that:
-
 **1. Debouncing Search:**
 
 - Created a custom `useDebounce` hook to delay API calls until the user finishes typing their search query. This prevents unnecessary requests and improves responsiveness, especially for faster typists.
@@ -95,7 +93,7 @@ This application prioritizes a smooth and responsive user experience, and we've 
 
 **1. Enhanced Content Security Policy (CSP):**
 
-- A robust CSP, fortified with Helmet middleware, rigorously blocks unauthorized scripts and thwarts XSS attacks. This acts as a vigilant gatekeeper, shielding your data from malicious code injection and web-based vulnerabilities.
+- A strong CSP, protect with Helmet middleware, rigorously blocks unauthorized scripts and thwarts XSS attacks. This acts as a vigilant gatekeeper, shielding your data from malicious code injection and web-based vulnerabilities.
 
 **2. Reinforced HTTPS:**
 
