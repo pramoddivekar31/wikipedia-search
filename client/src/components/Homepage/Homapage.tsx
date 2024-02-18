@@ -30,12 +30,10 @@ const Homepage = () => {
             offset: String(SEARCH_PARAMS.OFFSET),
           })
       );
-      console.log("Sucsse");
       const searchResults = await response.json();
       setSearchResults(searchResults);
       setSearchHistory((prevHistory) => [...prevHistory, query]);
     } catch (error) {
-      console.log("Errror:");
       showToast("Failed to load the results. Please try again.");
     } finally {
       setLoading(false);
