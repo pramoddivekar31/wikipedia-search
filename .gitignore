@@ -9,9 +9,11 @@ client/.pnp.js
 # testing
 client/coverage
 
-# production
-client/build
-server/dist
+# Ignore client/build directory
+client/build/
+
+# Ignore server/dist directory
+server/dist/
 
 # misc
 .env
