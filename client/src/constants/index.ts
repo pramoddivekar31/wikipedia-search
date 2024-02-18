@@ -15,3 +15,5 @@ export const VIRTULIZED_LIST = {
   WIDTH: 500,
   ITEM_SIZE: 50,
 };
+
+export const SEARCH_ERROR_MSG = "Failed to load the results. Please try again.";
