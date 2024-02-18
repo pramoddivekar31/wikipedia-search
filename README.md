@@ -75,15 +75,15 @@ npm run server
 
 **1. Debouncing Search:**
 
-- Created a custom `useDebounce` hook to delay API calls until the user finishes typing their search query. This prevents unnecessary requests to server.
+- Created a custom `useDebounce` hook to delay API calls until the user finishes typing their search query. This prevents unnecessary requests and improves responsiveness, especially for faster typists.
 
 **2. Virtualized Search Results:**
 
-- For displaying large lists of search results efficiently, have created a virtualized list component. This renders only a visible subset of results, minimizing DOM manipulation and memory usage, ensuring even large datasets load quickly and smoothly.
+- For displaying large lists of search results efficiently, we employ a virtualized list component. This renders only a visible subset of results, minimizing DOM manipulation and memory usage, ensuring even large datasets load quickly and smoothly.
 
 **3. Node.js Caching with 30 Minute TTL:**
 
-- To further enhance performance and reduce API calls/Database reads, have added Node.js caching (memcache) with a 30-minute time-to-live (TTL) [30-minute TTL may be adjusted based on specific usage patterns and data update frequency.]. This means frequently accessed search results are temporarily stored on the server for faster retrieval, reducing load on the Wikipedia API/Db and improving response times. Cached results are automatically refreshed every 30 minutes to ensure data freshness.
+- To further enhance performance and reduce API calls/Database reads, have leverage Node.js caching with a 30-minute time-to-live (TTL) [30-minute TTL may be adjusted based on specific usage patterns and data update frequency.]. This means frequently accessed search results are temporarily stored on the server for faster retrieval, reducing load on the Wikipedia API/Db and improving response times. Cached results are automatically refreshed every 30 minutes to ensure data freshness.
 
 **4. CDN:**
 
@@ -93,7 +93,7 @@ npm run server
 
 **1. Enhanced Content Security Policy (CSP):**
 
-- A CSP with Helmet middleware, rigorously blocks unauthorized scripts and thwarts XSS attacks. This acts as a gatekeeper, shielding your data from malicious code injection and web-based vulnerabilities.
+- A strong CSP, protect with Helmet middleware, rigorously blocks unauthorized scripts and thwarts XSS attacks. This acts as a vigilant gatekeeper, shielding your data from malicious code injection and web-based vulnerabilities.
 
 **2. Reinforced HTTPS:**
 
@@ -107,11 +107,9 @@ npm run server
 
 - Created a common middleware `applySecurityMiddlewares` to handle the above all security aspects.
 
-
 ## Deployment Strategy
 
 - This application can be deployed as a Node.js service on an EC2/EKS instance. The deployment strategy involves serving static assets through the S3 via CDN for enhanced performance. Additionally, API calls will be handled by the server.
-
 
 ### Author
 

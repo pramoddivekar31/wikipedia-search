@@ -34,6 +34,7 @@ const Homepage = () => {
       setSearchResults(searchResults);
       setSearchHistory((prevHistory) => [...prevHistory, query]);
     } catch (error) {
+      console.log("Errror:");
       showToast("Failed to load the results. Please try again.");
     } finally {
       setLoading(false);
