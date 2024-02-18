@@ -3,38 +3,43 @@ import SearchInput from "components/Homepage/SearchInput";
 import SearchResultList from "components/Homepage/SearchResultList";
 import SearchHistory from "components/Homepage/SearchHistory";
 import Loader from "common/Loader";
-import { SEARCH_PARAMS, SEARCH_URL, WIKIPEDIA_LOGO } from "constants/index";
+import {
+  SEARCH_ERROR_MSG,
+  SEARCH_PARAMS,
+  SEARCH_URL,
+  WIKIPEDIA_LOGO,
+} from "constants/index";
 import "./Homepage.css";
 import useToast from "hooks/useToast";
-import { SearchResults } from "types/homepage";
+import useSearch from "hooks/useSearch";
+import SEARCH_ACTIONS from "context/constants/searchActions";
+import searchWikiPediaArticles from "actions/searchWikiPediaArticles";
 
 const Homepage = () => {
-  const [searchResults, setSearchResults] = useState<SearchResults[]>([]);
-  const [searchHistory, setSearchHistory] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const { showToast } = useToast();
+  const { dispatch } = useSearch();
 
   const handleSearch = async (query: string) => {
     try {
       setLoading(true);
       if (!query) {
-        setSearchResults([]);
+        dispatch({ type: SEARCH_ACTIONS.SET_SEARCH_RESULTS, payload: [] });
         return;
       }
 
-      const response = await fetch(
-        `${SEARCH_URL}?` +
-          new URLSearchParams({
-            query: query,
-            limit: String(SEARCH_PARAMS.LIMIT),
-            offset: String(SEARCH_PARAMS.OFFSET),
-          })
-      );
-      const searchResults = await response.json();
-      setSearchResults(searchResults);
-      setSearchHistory((prevHistory) => [...prevHistory, query]);
+      const searchList = await searchWikiPediaArticles({ query });
+
+      dispatch({
+        type: SEARCH_ACTIONS.SET_SEARCH_RESULTS,
+        payload: searchList,
+      });
+      dispatch({
+        type: SEARCH_ACTIONS.UPDATE_TO_HISTORY,
+        payload: query as string,
+      });
     } catch (error) {
-      showToast("Failed to load the results. Please try again.");
+      showToast(SEARCH_ERROR_MSG);
     } finally {
       setLoading(false);
     }
@@ -49,13 +54,9 @@ const Homepage = () => {
           <h5>The Free Encyclopedia</h5>
         </div>
       </section>
-      <SearchHistory searchHistory={searchHistory} />
+      <SearchHistory />
       <SearchInput onSearchInputChange={handleSearch} />
-      {!loading ? (
-        <SearchResultList searchResults={searchResults} />
-      ) : (
-        <Loader />
-      )}
+      {!loading ? <SearchResultList /> : <Loader />}
     </div>
   );
 };

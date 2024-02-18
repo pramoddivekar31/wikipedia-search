@@ -1,13 +1,17 @@
-import { SearchHistoryProps } from "types/homepage";
 import "./SearchHistory.css";
+import useSearch from "hooks/useSearch";
 
-const SearchHistory = ({ searchHistory }: SearchHistoryProps) => {
+const SearchHistory = () => {
+  const {
+    state: { history },
+  } = useSearch();
+
   return (
     <aside className="search-history">
       <label className="history-label">Search History:</label>
-      {searchHistory.length > 0 ? (
+      {history?.length > 0 ? (
         <ul className="search-history-list">
-          {searchHistory.map((query: string) => (
+          {history.map((query: string) => (
             <li key={query} className="search-history-item">
               {query}
             </li>

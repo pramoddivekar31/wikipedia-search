@@ -2,9 +2,9 @@ import { DEBOUNCE_DELAY } from "constants/index";
 import useDebounce from "hooks/useDebounce";
 import React, { useEffect, useState } from "react";
 import "./SearchInput.css";
-import { SearchBarProps } from "types/homepage";
+import { SearchInputProps } from "types/homepage";
 
-const SearchInput = ({ onSearchInputChange }: SearchBarProps) => {
+const SearchInput = ({ onSearchInputChange }: SearchInputProps) => {
   const [query, setQuery] = useState("");
   const searchQuery = useDebounce(query, DEBOUNCE_DELAY);
 

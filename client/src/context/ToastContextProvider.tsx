@@ -1,24 +1,11 @@
-import React, { useState, createContext, ReactNode } from "react";
-
-interface Toast {
-  message: string;
-}
-
-export interface ToastContextType {
-  currentToast: Toast | null;
-  showToast: (message: string, duration?: number) => void;
-  hideToast: () => void;
-}
+import React, { useState, createContext } from "react";
+import { Toast, ToastContextType, ToastProviderProps } from "types/context";
 
 export const ToastContext = createContext<ToastContextType | undefined>(
   undefined,
 );
 
-interface ToastProviderProps {
-  children: ReactNode;
-}
-
-const ToastContextProvider: React.FC<ToastProviderProps> = ({ children }) => {
+const ToastContextProvider = ({ children }: ToastProviderProps) => {
   const [currentToast, setCurrentToast] = useState<Toast | null>(null);
 
   const showToast = (message: string, duration: number = 3000): void => {
