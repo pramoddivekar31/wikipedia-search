@@ -107,6 +107,12 @@ npm run server
 
 - Created a common middleware `applySecurityMiddlewares` to handle the above all security aspects.
 
+
+## Deployment Strategy
+
+- This application can be deployed as a Node.js service on an EC2/EKS instance. The deployment strategy involves serving static assets through Express (with the option to define a CDN for enhanced performance). Additionally, API calls will be handled by the server.
+
+
 ### Author
 
 Pramod Divekar
