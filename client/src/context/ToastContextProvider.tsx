@@ -2,7 +2,7 @@ import React, { useState, createContext } from "react";
 import { Toast, ToastContextType, ToastProviderProps } from "types/context";
 
 export const ToastContext = createContext<ToastContextType | undefined>(
-  undefined,
+  undefined
 );
 
 const ToastContextProvider = ({ children }: ToastProviderProps) => {
