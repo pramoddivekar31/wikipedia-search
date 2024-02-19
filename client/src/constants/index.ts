@@ -12,7 +12,7 @@ export const WIKIPEDIA_LOGO =
 
 export const VIRTULIZED_LIST = {
   HEIGHT: 400,
-  WIDTH: 500,
+  WIDTH: "100%",
   ITEM_SIZE: 50,
 };
 
