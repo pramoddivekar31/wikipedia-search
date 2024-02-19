@@ -6,12 +6,9 @@ import useToast from "hooks/useToast";
 import useSearch from "hooks/useSearch";
 import SEARCH_ACTIONS from "context/constants/searchActions";
 import searchWikiPediaArticles from "actions/searchWikiPediaArticles";
-
-const SearchInput = lazy(() => import("components/Homepage/SearchInput"));
-const SearchResultList = lazy(
-  () => import("components/Homepage/SearchResultList")
-);
-const SearchHistory = lazy(() => import("components/Homepage/SearchHistory"));
+import SearchInput from "components/Homepage/SearchInput";
+import SearchResultList from "components/Homepage/SearchResultList";
+import SearchHistory from "components/Homepage/SearchHistory";
 
 const Homepage = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -52,11 +49,9 @@ const Homepage = () => {
           <h5>The Free Encyclopedia</h5>
         </div>
       </section>
-      <Suspense fallback={<Loader />}>
-        <SearchHistory />
-        <SearchInput onSearchInputChange={handleSearch} />
-        {!loading ? <SearchResultList /> : <Loader />}
-      </Suspense>
+      <SearchHistory />
+      <SearchInput onSearchInputChange={handleSearch} />
+      {!loading ? <SearchResultList /> : <Loader />}
     </div>
   );
 };
