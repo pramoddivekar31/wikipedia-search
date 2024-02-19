@@ -1,5 +1,5 @@
 export enum SEARCH_PARAMS {
-  LIMIT = 100,
+  LIMIT = 500,
   OFFSET = 0,
 }
 
